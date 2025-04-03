@@ -2,10 +2,7 @@ from pathlib import Path;
 import urllib3;
 import calendar;
 
-
-
-
-
+# Download csv zum /parent.parent/downloadverzeichnis relativ zum 
 def download_csv(date:str, sensor_name:str):
     
     download_directory = Path(__file__).parent.parent/'downloads'
@@ -29,27 +26,23 @@ def download_csv(date:str, sensor_name:str):
     filepath.close()
 
 
-
-
-
 ## calendar.monthrange returnt den ersten Tag des Monats 
 # und die Anzahl der Tage im Monat -> [2] ist die Anzahl
 def return_days_per_month(month:int):
     year = 2022
+
     month = month
+
     days_for_month = calendar.monthrange(year, month)   
+    
     print(str(days_for_month[1]))
+    
     return days_for_month[1]
 
 
-
-
-return_days_per_month(11)
-
-
 def download_csv_month(month:int, sensor: str):
-
     maximum_days = return_days_per_month(month)
+    
     if sensor == "dht22_sensor_3660":
         for i in range (1,maximum_days + 1):
             if i > 0 and i <= 10:
