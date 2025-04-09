@@ -1,10 +1,9 @@
 from pathlib import Path;
-import os;
 
 def delete_download_data():
     download_directory = Path(__file__).parent.parent/'downloads'
-    for file in download_directory.interdir():
-        os.remove(file)
+    for file in download_directory.iterdir():
+        file.unlink()
 
 
 def delete_GZ_only():
@@ -20,4 +19,4 @@ def delete_GZ_and_csv():
         file.unlink()
 
 
-delete_GZ_and_csv()
+# delete_download_data()
