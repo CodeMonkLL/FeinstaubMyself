@@ -19,4 +19,4 @@ def delete_GZ_and_csv():
         file.unlink()
 
 
-# delete_download_data()
+#delete_download_data()

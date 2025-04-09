@@ -70,6 +70,6 @@ def download_csv_month(month:int, sensor: str):
 
 
 
-# download_csv("2022-02-02","dht22_sensor_3660")
+#download_csv("2022-02-02","dht22_sensor_3660")
 
 
