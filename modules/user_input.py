@@ -1,39 +1,13 @@
 from . import download_csv
 
 class UserInput:
-    def inputSensor():
-        print("--------------------------------------------------------")
-        print("Drücke 1 für Sensor DHT22")
-        print("Drücke 2 für Sensor SDS011")
 
-        while True:
-            sensor_input = input()
-
-            dht22:str = "dht22_sensor_3660"
-            sds011:str = "sds011_sensor_3659"
-
-            try:
-                sensor_input_int = int(sensor_input)
-            except:
-                "Fehler: Nicht 1 oder 2 eingegeben"
-                continue
-
-
-            if sensor_input_int == 1:
-                    print(f"Ausgewählter Sensor:{dht22}")
-                    return dht22
-            if sensor_input_int == 2:
-                    print(f"Ausgewählter Sensor:{sds011}")
-                    return sds011
-            else:
-                 print("Ungültige Eingabe.1 für DHT22 oder 2 Für SDS011")
-
-    def inputDate():
+    def inputDate(self):
         print("-------------------------------------------------------")
         print("Willkommen zum Abruf von Feinstaubdaten")
-        print("Bitte geben Sie zuerst an für welchen Zeitraum Sie Messwerte haben wollen:")
-        print("Gib die 1 ein für: Messwerte eines einzelnen Tages")
-        print("Oder die 2 für: Messwerte eines ganzen Monats")
+        print("Bitte geben Sie zuerst an für welchen Zeitraum Sie Messwerte in die Datenbank downloaden wollen:")
+        print("Gib die 1 ein für: Messwerte eines ganzen Monats")
+        print("Oder die 2 für: Messwerte eines einzelnen Tages")
         while True:
             date_input = input()
             if not date_input.isdigit():
@@ -61,6 +35,59 @@ class UserInput:
 
                 
             # if date_input_int == 2:
+
+    def inputSensors(self):
+        sensors = []
+        print("Wähle die Sensoren, für die du Daten herunterladen möchtest:")
+        print("Drücke 1 für DHT22")
+        print("Drücke 2 für SDS011")
+        print("Drücke 3 für beide Sensoren")
+
+        while True:
+            sensor_input = input()
+            if sensor_input == '1':
+                sensors.append("dht22_sensor_3660")
+            elif sensor_input == '2':
+                sensors.append("sds011_sensor_3659")
+            elif sensor_input == '3':
+                sensors.append("dht22_sensor_3660")
+                sensors.append("sds011_sensor_3659")
+            else:
+                print("Ungültige Eingabe. Versuche es nochmal.")
+
+            # Abfrage beenden, wenn mindestens ein Sensor ausgewählt wurde
+            if sensors:
+                break
+        return sensors
                  
                  
 # download_csv.download_csv_month(UserInput.inputDate(),UserInput.inputSensor())
+
+
+
+    # def inputSensor():
+    #     print("--------------------------------------------------------")
+    #     print("Drücke 1 für Sensor DHT22:")
+    #     print("Drücke 2 für Sensor SDS011")
+
+    #     while True:
+    #         sensor_input = input()
+
+    #         dht22:str = "dht22_sensor_3660"
+    #         sds011:str = "sds011_sensor_3659"
+
+    #         try:
+    #             sensor_input_int = int(sensor_input)
+    #         except:
+    #             "Fehler: Nicht 1 oder 2 eingegeben"
+    #             continue
+
+
+    #         if sensor_input_int == 1:
+    #                 print(f"Ausgewählter Sensor:{dht22}")
+    #                 return dht22
+    #         if sensor_input_int == 2:
+    #                 print(f"Ausgewählter Sensor:{sds011}")
+    #                 return sds011
+    #         else:
+    #              print("Ungültige Eingabe.1 für DHT22 oder 2 Für SDS011")
