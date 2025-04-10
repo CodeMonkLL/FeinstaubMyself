@@ -28,13 +28,15 @@ class UserInput:
                 months_input_int = int(months_input)
                 print(months_input_int)
                 return months_input_int
+            
+            # if date_input_int == 2:
         
     def build_Date(day: str , month:str):
         date_string = f"2022-{month:2d}-{day:2d}"
         return date_string
 
                 
-            # if date_input_int == 2:
+            
 
     def inputSensors(self):
         sensors = []
