@@ -18,5 +18,5 @@ def delete_GZ_and_csv():
     for file in download_directory.iterdir():
         file.unlink()
 
-
-#delete_download_data()
+if __name__ == "__main__":
+    delete_download_data()

@@ -31,3 +31,13 @@ else:
 
 
 conn.close()
+
+"SELECT MIN(p1) "
+"FROM messwerte "
+"WHERE DATE(2022-03-14)"
+
+
+SELECT timestamp, P1, P2
+FROM messwerte
+WHERE DATE(timestamp) = '2022-03-14'
+ORDER BY timestamp;
