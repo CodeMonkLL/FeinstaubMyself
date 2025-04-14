@@ -1,5 +1,7 @@
 from pathlib import Path
+import delete_files, sqlite3
 import download_csv, sqlite3
+import user_input, sqlite3
 
 
 #Convert CSV data in a DB
@@ -10,3 +12,16 @@ import download_csv, sqlite3
 base_path = Path(__file__)
 
 full_path = base_path
+conn = sqlite3.connect('feinstaub.db')
+cur = conn.cursor()
+
+cur.execute("SELECT timestamp, temperature FROM tem_hum")
+
+print("Zeit\t Temperatur")
+for ts, temp in cur:
+    print(ts, "\t", temp)
+
+
+conn.close()
+
+#Convert soll die csv-Dateien in die Feinstaub.db importieren/migrieren
