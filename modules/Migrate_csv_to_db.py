@@ -26,8 +26,10 @@ def migrate_csv_to_db():
                 for line in file:
                     data = line.strip().split(',')
                     cur.execute("INSERT INTO dht22_metric (sensor_id;sensor_type;location;lat;lon;timestamp;temperature;humidity) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]))
+
+# Debugging-Ausgabe
 def migrate_csv_to_db():
-    print(f"Base path: {base_path}")  # Debugging-Ausgabe
+    print(f"Base path: {base_path}")  
     download_csv.download_csv()
 
 
@@ -41,6 +43,6 @@ conn.close()
 
 #Convert soll die csv-Dateien in die Feinstaub.db importieren/migrieren
 #Convert CSV data in a DB
-#Kade due CSV-Daten für das Jahr 2022 herunter und 
+#Lade die CSV-Daten für das Jahr 2022 herunter und 
 #importiere sie in eine SQLite-Datenbank. Prüfe ggf. den korrekten
 #Import leerer EInträge als NULL-Werte.
