@@ -7,7 +7,8 @@ from pathlib import Path
 dir_path = Path(__file__).parent.parent / 'downloads'
 dir_target = Path(__file__).parent.parent / 'csv'
 
-def extract_gz_to_csv(dir_path: Path, dir_target: Path): #where to take file and where to save them
+#def extract_gz_to_csv(dir_path: Path, dir_target: Path):
+def extract_gz_to_csv(): #where to take file and where to save them
     dir_target.mkdir(parents=True, exist_ok=True) #create target dir (if it doesn't already exist)
 
     for gz_file in dir_path.iterdir():
@@ -22,4 +23,4 @@ def extract_gz_to_csv(dir_path: Path, dir_target: Path): #where to take file and
                 with open(local_csv_path, 'w', encoding='utf-8') as f_out:
                     f_out.write(f_in.read()) #reads the entire contents of a gzip file and writes it to a csv file.
 
-extract_gz_to_csv(dir_path, dir_target)
+#extract_gz_to_csv(dir_path, dir_target)
