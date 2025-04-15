@@ -4,10 +4,10 @@ import sqlite3
 from pathlib import Path
 
 # Pfad zur Datenbank (eine Ebene über dem Ordner 'services')
-DB_PATH = Path(__file__).parent.parent/"feinstaub.db"
 
-def create_tables():
-    conn = sqlite3.connect(DB_PATH)
+
+def create_tables(db_path:str):
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     # Tabelle für DHT22-Messwerte
@@ -48,4 +48,4 @@ def create_tables():
     print("Datenbank und Tabellen wurden erfolgreich erstellt.")
 
 if __name__ == "__main__":
-    create_tables()
+    create_tables(Path(__file__).parent.parent/"feinstaub.db")

@@ -34,3 +34,6 @@ def migrate_csv_to_db():
     print("CSV-Dateien erfolgreich in die Datenbank importiert.")
     #Datenbankverbindung schließen
     conn.close()
+
+    #eine Klasse zu parsen
+    #open - > csv reader
