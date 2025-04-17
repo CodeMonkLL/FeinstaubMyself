@@ -11,7 +11,7 @@ import os
 def extract_gz_to_csv(dir_path: Path, dir_target: Path): #where to take file and where to save them
     os.makedirs(dir_target, exist_ok=True) #create target dir (if it doesn't already exist)
 
-    for gz_file in os.listdir(dir_path):
+    for gz_file in dir_path.iterdir():
         if gz_file.is_file() and gz_file.name.endswith('.csv.gz'):
             csv_file_name = gz_file.name[:-3]  # remove ".gz" to create a new path 
             local_csv_path = dir_target / csv_file_name # generate the full path to a new CSV file

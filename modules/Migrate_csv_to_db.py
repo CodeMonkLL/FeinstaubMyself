@@ -37,3 +37,6 @@ def migrate_csv_to_db():
 
     #eine Klasse zu parsen
     #open - > csv reader
+
+if __name__ == "__main__":
+    migrate_csv_to_db()
