@@ -1,11 +1,8 @@
 import sqlite3;
 from pathlib import Path;
 
-def getMAXfrom(value:str, sensor:str, column:str, startDate: str, endDate:str):
+def get_Value_from_DB(value:str, sensor:str, column:str, startDate: str, endDate:str):
     conn = sqlite3.connect(Path(__file__).parent.parent.parent/'feinstaub.db')
-
-
-
 
     cursor = conn.cursor()
 
@@ -19,15 +16,15 @@ def getMAXfrom(value:str, sensor:str, column:str, startDate: str, endDate:str):
     
     if value == "MAX":
         print(f"Maximaler Wert in der Spalte {column}: {wert[0]}")
-        print(f"Im Zeitraum von {startDate} bis {endDate}")
+        print(f"Im Zeitraum von 2022-{startDate} bis 2022-{endDate}")
 
     elif value == "MIN":
         print(f"Minmaler Wert in der Spalte {column}: {wert[0]}")
-        print(f"Im Zeitraum von {startDate} bis {endDate}")
+        print(f"Im Zeitraum von 2022-{startDate} bis 2022-{endDate}")
 
     elif value == "AVG":
         print(f"Durchschnittlicher Wert in der Spalte {column}: {wert[0]}")
-        print(f"Im Zeitraum von {startDate} bis {endDate}")
+        print(f"Im Zeitraum von 2022-{startDate} bis 2022-{endDate}")
 
     else:
         print(f"Unbekannter Wertetyp: {value}")
@@ -35,7 +32,6 @@ def getMAXfrom(value:str, sensor:str, column:str, startDate: str, endDate:str):
 
 
 
-
 if __name__ == "__main__":
-    getMAXfrom("sds011_metric", "P2", "02-01", "02-15")
+    get_Value_from_DB("MAX","dht22_metric", "temperature", "02-01", "02-15")
     
