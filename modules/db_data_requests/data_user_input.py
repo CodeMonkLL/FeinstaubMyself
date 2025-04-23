@@ -1,4 +1,4 @@
-from get_Value import get_Value_from_DB
+from modules.db_data_requests.get_Value import get_Value_from_DB
 
 
 
@@ -13,7 +13,7 @@ def set_value():
         print("2 für Minimalwert")
         print("3 für Mittelwert")
 
-        actionInput = input()
+        actionInput = input(">>>")
 
         if not actionInput.isdigit():
             print("Fehler, bitte 1,2 oder 3 für die jeweiligen Werte angeben")
@@ -25,7 +25,7 @@ def set_value():
             print("Fehler: Zahl ist nicht 1,2 oder 3 für jeweilige Werte")
             continue
 
-        else: print("Du hast die Zahl " + actionInput + "angegeben")
+        else: print("Du hast die Zahl " + actionInput + " angegeben")
         
         if actionInput_int == 1:
             return "MAX"
@@ -40,10 +40,9 @@ def set_value():
 
 def return_date():
     print("-----------------------------------------------------------")
-    # print("Gib bitte das Startdatum im Format MM-DD an (für das Jahr 2022):")
 
     while True:
-        startDate = input("Datum: ")
+        startDate = input(">>>")
 
         parts = startDate.split("-")
 
@@ -77,23 +76,23 @@ def return_date():
 
 
 def return_sensor_column():
-    # print("Gib an, welchen Wert du abrufen willst: ")
     while True:
         columns = ["temperature","humidity","P1","P2",]
         sensors = ["dht22_metric","sds011_metric",]
         for i in range (1,5):
             print(f"Gib bitte {i} ein für: {columns[i-1]}")
         
-        columninput = input()
+        columninput = input(">>>")
+        print("Du hast " + columninput + "ausgewählt")
 
         columninput_int = int(columninput)
 
         if not columninput.isdigit():
-            print("Bitte gib eine gültige Zahl ein!")
+            print("Fehler:Bitte gib eine gültige Zahl ein!")
             continue
     
         if not (1 <= columninput_int <= 4):
-            print("Bitte gib eine Zahl zwischen 1 und 4 für den jeweiligen Wert ein!")
+            print("Fehler: Bitte gib eine Zahl zwischen 1 und 4 für den jeweiligen Wert ein!")
             continue
 
         if columninput_int == 1:
@@ -116,21 +115,30 @@ def return_sensor_column():
 
 
 def display_data_func():
-    value = set_value()
-    
-    column_sensor = return_sensor_column()
+    while True:
+        value = set_value()
+        
+        column_sensor = return_sensor_column()
 
-    column = column_sensor[1]
+        column = column_sensor[1]
 
-    sensor = column_sensor[0]
+        sensor = column_sensor[0]
 
-    print("Gib bitte das Startdatum im Fortmat MM-DD an (für 2022)")    
-    startdate = return_date()
+        print("Gib bitte das Startdatum im Fortmat MM-DD an (für 2022)")    
+        startdate = return_date()
 
-    print("Gib bitte das Enddatum im Fortmat MM-DD an (für 2022)")
-    enddate = return_date()
+        print("Gib bitte das Enddatum im Fortmat MM-DD an (für 2022)")
+        enddate = return_date()
 
-    get_Value_from_DB(value,column,sensor,startdate, enddate)
+        get_Value_from_DB(value,column,sensor,startdate, enddate)
+
+        print("Möchtest du eine weitere Aufgabe machen?")
+        print("Drücke e für EXIT oder beliebige Taste um erneut zu starten")
+        exit = input(">>>").lower()
+        if exit == "e":
+            print("Programm wird beendet")
+            break
+            
 
 
 if __name__ == "__main__":

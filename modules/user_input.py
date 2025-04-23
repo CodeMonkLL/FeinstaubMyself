@@ -12,7 +12,7 @@ def inputDate():
         "Juli", "August", "September", "Oktober", "November", "Dezember"
     ]
     while True:
-        date_input = input()
+        date_input = input(">>>")
         if not date_input.isdigit():
             print("Fehler: keine Zahl! Bitte geb erneut 1 oder 2 ein")
             continue
@@ -26,7 +26,7 @@ def inputDate():
             for i in range(1, 13):
                 print(f"Gib bitte {i} ein für: {months[i - 1]}")
             while True:
-                months_input = input()
+                months_input = input(">>>")
                 if not months_input.isdigit():
                     print("Fehler: bitte gib eine gültige Zahl zwischen 1 und 12 an!")
                     continue
