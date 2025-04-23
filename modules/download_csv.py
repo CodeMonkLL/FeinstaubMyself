@@ -16,14 +16,13 @@ def download_csv(date:str, sensor_name:str):
 
     http = urllib3.PoolManager()
 
-
     try:
         csvrequest = http.request("GET", url, preload_content=False)
     
     except Exception as e:
         print (e)
         return
-
+    
     if csvrequest.status == 404:
         print("Daten nicht vorhanden.")
         return
@@ -67,9 +66,12 @@ def download_csv_month(month:int, sensor: str):
         download_csv("2022-"+ month_str + "-" + day_str, sensor)
 
 
+def download_csv_year():
+    for i in range(1,13):
+        download_csv_month(i,"dht22_sensor_3660")
+        download_csv_month(i,"sds011_sensor_3659")
 
 
-if __name__ == "__main__":
-    download_csv("2022-02-02","dht22_sensor_3660")
-
-
+#if __name__ == "__main__":
+    # download_csv("2022-02-02","dht22_sensor_3660")
+    # download_csv_month(3,"dht22_sensor_3660")
