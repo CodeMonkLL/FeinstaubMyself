@@ -46,7 +46,6 @@ def build_Date(day: str , month:str):
 ## calendar.monthrange returnt den ersten Tag des Monats 
 # und die Anzahl der Tage im Monat -> [1] ist die Anzahl
 def return_days_per_month(month:int) -> int:
-
     return calendar.monthrange(2022, month)[1]
 
 

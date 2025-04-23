@@ -1,4 +1,5 @@
 from modules.db_data_requests.get_Value import get_Value_from_DB
+from modules.matplotlib import show_graph
 
 
 
@@ -91,25 +92,25 @@ def return_sensor_column():
             print("Fehler:Bitte gib eine gültige Zahl ein!")
             continue
     
-        if not (1 <= columninput_int <= 4):
+        if not (1 <= columninput_int <= len(columns)):
             print("Fehler: Bitte gib eine Zahl zwischen 1 und 4 für den jeweiligen Wert ein!")
             continue
 
         if columninput_int == 1:
             print(f"{columns[0]} ausgewählt")
-            return columns[0] , sensors[0]
+            return sensors[0], columns[0]  
         
         elif columninput_int == 2:
             print(f"{columns[1]} ausgewählt")
-            return columns[1], sensors[0]
+            return sensors[0], columns[1]  
         
         elif columninput_int == 3:
             print(f"{columns[2]} ausgewählt")
-            return columns[2], sensors[1]
+            return sensors[1], columns[2]  
         
         elif columninput_int == 4:
             print(f"{columns[3]} ausgewählt")
-            return columns[3], sensors[1]
+            return sensors[1], columns[3]
 
 
 
@@ -118,11 +119,10 @@ def display_data_func():
     while True:
         value = set_value()
         
-        column_sensor = return_sensor_column()
+        column_and_sensor = return_sensor_column()
 
-        column = column_sensor[1]
-
-        sensor = column_sensor[0]
+        sensor = column_and_sensor[0] # z. B. "dht22_metric"
+        column = column_and_sensor[1]  # z. B. "temperature" 
 
         print("Gib bitte das Startdatum im Fortmat MM-DD an (für 2022)")    
         startdate = return_date()
@@ -130,7 +130,9 @@ def display_data_func():
         print("Gib bitte das Enddatum im Fortmat MM-DD an (für 2022)")
         enddate = return_date()
 
-        get_Value_from_DB(value,column,sensor,startdate, enddate)
+        get_Value_from_DB(value,sensor,column,startdate,enddate)
+
+        show_graph.get_plot_data(sensor, column, startdate, enddate)
 
         print("Möchtest du eine weitere Aufgabe machen?")
         print("Drücke e für EXIT oder beliebige Taste um erneut zu starten")
