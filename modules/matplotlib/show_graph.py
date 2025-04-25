@@ -31,7 +31,7 @@ def get_plot_data(sensor: str, column: str, startDate: str, endDate: str):
         print("Keine Daten gefunden.")
         return [], []
 
-    sample_rate = 100  # nur jeden 10. Wert verwenden
+    sample_rate = 100  # nur jeden 100. Wert verwenden
     x_values = [row[0] for i, row in enumerate(results) if i % sample_rate == 0]
     y_values = [row[1] for i, row in enumerate(results) if i % sample_rate == 0]
 

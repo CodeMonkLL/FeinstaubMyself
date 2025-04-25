@@ -71,6 +71,6 @@ def download_csv_year():
         download_csv_month(i,"sds011_sensor_3659")
 
 
-#if __name__ == "__main__":
-    # download_csv("2022-02-02","dht22_sensor_3660")
-    # download_csv_month(3,"dht22_sensor_3660")
+# if __name__ == "__main__":
+    
+#     download_csv_month(3,"dht22_sensor_3660")
