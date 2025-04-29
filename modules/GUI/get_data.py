@@ -2,6 +2,8 @@ import sqlite3;
 from pathlib import Path
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import numpy as np
+import matplotlib.pyplot as plt
 
 def get_plot_data_in_tkinter(plot_frame,sensor: str, column: str, startDate: str, endDate: str):
         conn = sqlite3.connect(Path(__file__).parent.parent.parent / 'feinstaub.db')
@@ -25,13 +27,20 @@ def get_plot_data_in_tkinter(plot_frame,sensor: str, column: str, startDate: str
         x_values = [row[0] for i, row in enumerate(results) if i % sample_rate == 0]
         y_values = [row[1] for i, row in enumerate(results) if i % sample_rate == 0]
 
+        timestamps = [row[0] for row in results]
+       
+        
+        tick_dates = [timestamps[0], timestamps[-1]]
+
         # Matplotlib-Figur erstellen
         fig = Figure(figsize=(6, 3),dpi=100) #Hauptobjekt der Zeichnung
         ax = fig.add_subplot(1, 1, 1) #Achsenbereich auf Zeichnung
         ax.plot(x_values, y_values) #Koordinatensystem gefüllt mit den Werten
+        ax.set_xticks(tick_dates)
         ax.set_title(f"{column} von {startDate} bis {endDate}")
         ax.set_xlabel("Zeit")
         ax.set_ylabel(column)
+        plt.xticks(rotation=45)
 
         # Canvas für Tkinter
         canvas = FigureCanvasTkAgg(fig, master=plot_frame)

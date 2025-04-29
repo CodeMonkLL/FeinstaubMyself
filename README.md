@@ -13,6 +13,39 @@ urllib3 2.3.0
 
 ---
 
+FeinstaubMyself/
+│
+├── main.py # Einstiegspunkt der Anwendung
+├── requirements.txt # Abhängigkeiten (falls vorhanden)
+│
+├── modules/ # Hauptmodul, das alle logischen Komponenten enthält
+│ ├── **init**.py # Ermöglicht es, das `modules`-Verzeichnis als Modul zu behandeln
+│ ├── data_loader/ # Lade-Logik (z.B. CSV, DB)
+│ │ ├── **init**.py
+│ │ ├── download.py # CSV-Download
+│ │ ├── unzip.py # Entpacken der CSV-Dateien
+│ │ ├── write_csv_to_db.py # Schreiben der CSV-Daten in DB
+│ │ └── create_db.py # Erstellen der Datenbank
+│ │
+│ ├── gui/ # GUI-Komponenten
+│ │ ├── **init**.py
+│ │ ├── feinstaub_gui.py # GUI mit Tkinter
+│ │ ├── get_data.py # Logik zum Abrufen von Daten für die GUI
+│ │ └── select_date.py # Datumsauswahl-Logik für die GUI
+│ │
+│ ├── database/ # Datenbank-Interaktionen
+│ │ ├── **init**.py
+│ │ ├── db_connection.py # Verbindung zur DB
+│ │ ├── queries.py # SQL-Abfragen und DB-Logik
+│ │ └── models.py # Definition von DB-Modellen (falls nötig)
+│ │
+│ └── utils/ # Hilfsfunktionen und allgemeine Logik
+│ ├── **init**.py
+│ ├── input_validation.py # Validierung von Benutzereingaben
+│ └── plot.py # Logik für die Plots mit Matplotlib
+│
+└── README.md # Dokumentation
+
 ## 📚 Verwendete Bibliotheken und Funktionen
 
 ### 🔹 Standardbibliotheken
