@@ -1,3 +1,4 @@
 downloads/
 csv/
 feinstaub.db
+**/__pycache__/
