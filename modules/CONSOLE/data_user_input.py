@@ -84,7 +84,7 @@ def return_sensor_column():
             print(f"Gib bitte {i} ein für: {columns[i-1]}")
         
         columninput = input(">>>")
-        print("Du hast " + columninput + "ausgewählt")
+        print("Du hast " + columninput + " ausgewählt")
 
         columninput_int = int(columninput)
 
