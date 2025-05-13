@@ -10,11 +10,11 @@ def main():
     create_db.create_tables("feinstaub.db")
 
 
-    #Abfrage für Download
-    user_input.input_for_download()
-    #download + entpacken
-    extract_gz_to_csv.extract_gz_to_csv()
-    Migrate_csv_to_db.migrate_csv_to_db()
+    # #Abfrage für Download
+    # user_input.input_for_download()
+    # #download + entpacken
+    # extract_gz_to_csv.extract_gz_to_csv()
+    # Migrate_csv_to_db.migrate_csv_to_db()
 
     #Abfrage der Daten für Zeitraum X von Min/Max/Avg
     data_user_input.display_data_func()
