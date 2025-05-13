@@ -35,4 +35,4 @@ def get_Value_from_DB(value:str, sensor:str, column:str, startDate: str, endDate
 
 if __name__ == "__main__":
     get_Value_from_DB("MAX","dht22_metric", "temperature", "01-01", "01-15")
-    
+

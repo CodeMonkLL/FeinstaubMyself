@@ -23,13 +23,16 @@ def migrate_csv_to_db():
                 for line in file:
                     print(line)
                     data = line.strip().split(';')
-                    cur.execute("INSERT INTO sds011_metric (sensor_id,sensor_type,location,lat,lon,timestamp,P1,durP1,ratioP1,P2,durP2,ratioP2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11]))
+                    cur.execute("INSERT INTO sds011_metric (sensor_id,sensor_type,location,lat,lon,timestamp,P1,durP1,ratioP1,P2,durP2,ratioP2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                                 (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11]))
             else:
                 for line in file:
                     print("Importiere:" + line)
                     data = line.strip().split(';')
-                    #print("INSERT INTO dht22_metric (sensor_id,sensor_type,location,lat,lon,timestamp,temperature,humidity) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (int(data[0]), data[1], data[2], float(data[3]), float(data[4]), data[5], float(data[6]), float(data[7])))
-                    cur.execute("INSERT INTO dht22_metric (sensor_id,sensor_type,location,lat,lon,timestamp,temperature,humidity) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (int(data[0]), data[1], data[2], float(data[3]), float(data[4]), data[5], float(data[6]), float(data[7])))
+                    #print("INSERT INTO dht22_metric (sensor_id,sensor_type,location,lat,lon,timestamp,temperature,humidity)
+                    #VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (int(data[0]), data[1], data[2], float(data[3]), float(data[4]), data[5], float(data[6]), float(data[7])))
+                    cur.execute("INSERT INTO dht22_metric (sensor_id,sensor_type,location,lat,lon,timestamp,temperature,humidity) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                                 (int(data[0]), data[1], data[2], float(data[3]), float(data[4]), data[5], float(data[6]), float(data[7])))
     
     conn.commit()                
     print("CSV-Dateien erfolgreich in die Datenbank importiert.")
@@ -40,5 +43,4 @@ def migrate_csv_to_db():
 if __name__ == "__main__":
     migrate_csv_to_db()
 
-    #eine Klasse zu parsen
-    #open - > csv reader
+
