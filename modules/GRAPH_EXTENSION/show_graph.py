@@ -8,15 +8,6 @@ def get_plot_data(sensor: str, column: str, startDate: str, endDate: str):
     cursor = conn.cursor()
 
 
-    # count_query = f"""
-    # SELECT COUNT(*) FROM {sensor}
-    # WHERE timestamp BETWEEN '2022-{startDate}T00:00:00' AND '2022-{endDate}T23:59:59'
-    # """
-    # cursor.execute(count_query)
-    # row_count = cursor.fetchone()[0]
-    # print(f"Anzahl der Datensätze im Zeitraum: {row_count}")
-
-
     query = f"""
     SELECT timestamp, {column}
     FROM {sensor}

@@ -3,7 +3,7 @@ import urllib3;
 import calendar;
 from urllib3.exceptions import HTTPError
 
-# Download csv zum /parent.parent/downloadverzeichnis relativ zum 
+# Download csv zum /parent.parent/downloadverzeichnis relativ zur Datei
 def download_csv(date:str, sensor_name:str):
     
     download_directory = Path(__file__).parent.parent.parent/'downloads'
@@ -11,6 +11,10 @@ def download_csv(date:str, sensor_name:str):
     download_path = download_directory / f"{date}_{sensor_name}.csv.gz"
 
     print(download_directory)
+
+    if download_path.exists():
+        print(f"Datei bereits vorhanden: {download_path.name}")
+        return
 
     url = f"https://archive.sensor.community/2022/{date}/{date}_{sensor_name}.csv.gz"
 
